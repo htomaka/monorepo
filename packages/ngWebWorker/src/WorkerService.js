@@ -12,17 +12,20 @@ function WorkerService ( $q ) {
         workerPath = path;
     }
 
+    function processData ( data ) {
+        defer = $q.defer ();
+        worker.postMessage ({
+            'myData': data
+        });
+        return defer.promise;
+    }
+
     worker.addEventListener ('message', function ( e ) {
         defer.resolve (e.data);
     }, false);
+
     return {
-        processData: function ( data ) {
-            defer = $q.defer ();
-            worker.postMessage ({
-                'myData': data
-            });
-            return defer.promise;
-        },
+        processData: processData,
         setWorkerPath: setWorkerPath
     };
 }
