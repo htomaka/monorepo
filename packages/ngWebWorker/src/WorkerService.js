@@ -9,10 +9,12 @@ function WorkerService ( $q ) {
     let defer = $q.defer ();
 
     function setWorkerPath ( path ) {
+        console.log('set path', path);
         workerPath = path;
     }
 
     function processData ( data ) {
+        console.log('processData', data);
         defer = $q.defer ();
         worker.postMessage ({
             'myData': data
@@ -21,6 +23,7 @@ function WorkerService ( $q ) {
     }
 
     worker.addEventListener ('message', function ( e ) {
+        console.log('worker message', e);
         defer.resolve (e.data);
     }, false);
 
