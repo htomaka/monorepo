@@ -2,7 +2,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: './index.js',
-        library: 'ngWebWorker',
+        library: 'ngwebworker',
         libraryTarget: 'umd'
     },
     module: {
