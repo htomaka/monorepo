@@ -22,7 +22,8 @@ function WorkerService ( $q ) {
                 'myData': data
             });
             return defer.promise;
-        }
+        },
+        setWorkerPath: setWorkerPath
     };
 }
 
